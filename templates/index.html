@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Market-Sense Dashboard</title>
+    <!-- We are importing the Chart.js library from a CDN (Content Delivery Network) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5; 
+            color: #1c1e21; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2em;
+        }
+        h1 { 
+            color: #0d6efd;
+        }
+        .chart-container {
+            position: relative;
+            width: 80vw;
+            max-width: 1000px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Market-Sense Dashboard for IBM</h1>
+    
+    <div class="chart-container">
+        <!-- This canvas element is where Chart.js will draw our chart -->
+        <canvas id="marketChart"></canvas>
+    </div>
+
+    <script>
+        // --- 1. PREPARE THE DATA ---
+        // Get the data that Flask passed to us.
+        // We use the 'tojson' filter to safely convert the Python dictionary to a JavaScript object.
+        const marketData = {{ market_data | tojson }};
+        const sortedDates = {{ sorted_dates | tojson }};
+
+        // We only want to chart the last 30 days for clarity.
+        const chartDates = sortedDates.slice(0, 30).reverse(); // Reverse to show oldest to newest
+
+        // Create empty arrays to hold the data for our chart
+        const priceData = [];
+        const sentimentData = [];
+
+        // Loop through our dates and populate the arrays
+        chartDates.forEach(date => {
+            priceData.push(marketData[date].close_price);
+            sentimentData.push(marketData[date].avg_sentiment);
+        });
+
+        // --- 2. CREATE THE CHART ---
+        // Get the canvas element from the HTML
+        const ctx = document.getElementById('marketChart').getContext('2d');
+
+        // Create the chart object
+        const marketChart = new Chart(ctx, {
+            type: 'line', // We want a line chart
+            data: {
+                labels: chartDates, // X-axis labels (our dates)
+                datasets: [
+                    {
+                        label: 'Close Price ($)',
+                        data: priceData,
+                        borderColor: 'rgb(25, 99, 132)',
+                        backgroundColor: 'rgba(25, 99, 132, 0.5)',
+                        yAxisID: 'yPrice', // Link to the left Y-axis
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Average Sentiment',
+                        data: sentimentData,
+                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                        yAxisID: 'ySentiment', // Link to the right Y-axis
+                        tension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                scales: {
+                    // Left Y-axis for Price
+                    yPrice: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'Stock Price ($)'
+                        }
+                    },
+                    // Right Y-axis for Sentiment
+                    ySentiment: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Sentiment Score'
+                        },
+                        // Keep the grid lines from overlapping
+                        grid: {
+                            drawOnChartArea: false, 
+                        },
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
