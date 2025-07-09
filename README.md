@@ -12,10 +12,10 @@ Market-Sense is a full-stack web application that fetches real-time stock prices
 
 ## Features
 
--   **Dynamic Data Fetching:** Pulls the latest daily stock prices and news from the Alpha Vantage API.
--   **Sentiment Analysis:** Calculates an average sentiment score for each day based on financial news headlines.
--   **Interactive Visualization:** Renders a responsive line chart using Chart.js with dual Y-axes to clearly compare price and sentiment.
--   **Full-Stack Architecture:** Built with a Python/Flask backend that processes data and a JavaScript/HTML frontend that displays it.
+-   **Dynamic Data Fetching:** Pulls the latest daily stock prices and news from the Alpha Vantage API
+-   **Sentiment Analysis:** Calculates an average sentiment score for each day based on financial news headlines
+-   **Interactive Visualization:** Renders a responsive line chart using Chart.js with dual Y-axes to clearly compare price and sentiment
+-   **Full-Stack Architecture:** Built with a Python/Flask backend that processes data and a JavaScript/HTML frontend that displays it
 
 ## Tech Stack
 
