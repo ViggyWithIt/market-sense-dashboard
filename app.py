@@ -2,15 +2,13 @@ from flask import Flask, render_template
 import requests
 from datetime import datetime
 
-# --- Initialize the Flask Application ---
+#initialize the Flask App
 app = Flask(__name__)
 
-# --- Your Data Fetching and Merging Logic ---
 def get_market_data(symbol='IBM'):
-    # IMPORTANT: Replace with your actual API key
     API_KEY = 'H30O5AJRVNKSKAGQ'
     
-    # 1. Fetch Price Data
+    #1. fetch price data
     price_url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&outputsize=full&apikey={API_KEY}'
     print(f"Fetching daily price data for {symbol}...")
     try:
@@ -22,7 +20,7 @@ def get_market_data(symbol='IBM'):
         print(f"Error fetching price data: {e}")
         price_data = {}
 
-    # 2. Fetch News Sentiment Data
+    # 2. Fetch news sentiment data
     news_url = f'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers={symbol}&limit=200&apikey={API_KEY}'
     print(f"Fetching news sentiment data for {symbol}...")
     try:
@@ -54,7 +52,7 @@ def get_market_data(symbol='IBM'):
                 sentiment_score = float(ticker_sentiment_info.get('ticker_sentiment_score', 0.0))
                 combined_data[publication_date]['sentiment_scores'].append(sentiment_score)
 
-    # 4. Calculate Average Sentiment
+    # 4. Calculate avg sentiment
     for date_str, data in combined_data.items():
         scores = data['sentiment_scores']
         if scores:
@@ -62,20 +60,19 @@ def get_market_data(symbol='IBM'):
             
     return combined_data
 
-# --- Define the Main Route (Homepage) ---
+#Define the Main Route (homepage)
 @app.route('/')
 def index():
     print("Rendering the homepage with data...")
-    # Call our function to get the data
+    # Call  function to get the data
     market_data = get_market_data()
     
     # Sort the dates to pass them to the template in order
     sorted_dates = sorted(market_data.keys(), reverse=True)
     
     # Pass the data to the template file
-    # The variable name on the left ('market_data') is what we'll use in the HTML
     return render_template('index.html', market_data=market_data, sorted_dates=sorted_dates)
 
-# --- Run the Application ---
+# run the app :)
 if __name__ == '__main__':
     app.run(debug=True)
