@@ -1,27 +1,27 @@
-# Market-Sense Dashboard
+# Market-Sense
 
-**A data-driven web application that visualizes daily stock prices against financial news sentiment to provide clearer market context.**
+**My full-stack web app for visualizing how financial news sentiment impacts stock prices.**
 
 ![Market-Sense Screenshot](images/screenshot.png)
 
-## Project Description
+## Why I Built This
 
-In a world where financial stability can feel unpredictable, understanding the forces that drive market movements is a form of empowerment. This project was born from a desire to cut through the noise of financial reporting and create a clear, data-driven view of market sentiment.
+After my quantitative trading model was blindsided by a sudden news event, I realized that the numbers on the chart were only half the story. I became obsessed with the idea of seeing the "human" element—the fear and greed reflected in the news—right alongside the hard data. I wanted to build a tool that could bridge that gap.
 
-Market-Sense is a full-stack web application that fetches real-time stock prices and financial news from the Alpha Vantage API. It then calculates an average daily sentiment score from the news headlines and plots this score against the stock's price on a single, interactive chart. By visualizing quantitative price data alongside qualitative sentiment data, this tool aims to provide a more nuanced perspective for students and new investors.
+Market-Sense is my answer. It's a web app that pulls daily stock prices and the latest financial news, analyzes the sentiment of the headlines, and then plots both on a single, interactive graph. This project was my deep dive into full-stack development, APIs, and the challenge of turning messy, real-world news into structured, visual data. It's my attempt to create a clearer, more contextual view of the market.
 
-## Features
+## What It Does
 
--   **Dynamic Data Fetching:** Pulls the latest daily stock prices and news from the Alpha Vantage API
--   **Sentiment Analysis:** Calculates an average sentiment score for each day based on financial news headlines
--   **Interactive Visualization:** Renders a responsive line chart using Chart.js with dual Y-axes to clearly compare price and sentiment
--   **Full-Stack Architecture:** Built with a Python/Flask backend that processes data and a JavaScript/HTML frontend that displays it
+-   **Fetches daily stock prices and relevant news** for a given ticker using the Alpha Vantage API.
+-   **Analyzes news headlines** to calculate an average daily sentiment score.
+-   **Plots both price and sentiment** on an interactive Chart.js graph with two Y-axes for easy comparison.
+-   **Built on a simple full-stack architecture** with a Python/Flask backend for data processing and a clean HTML/JS frontend for visualization.
 
 ## Tech Stack
 
 -   **Backend:** Python, Flask
 -   **Frontend:** HTML, CSS, JavaScript, Chart.js
--   **APIs:** Alpha Vantage API
+-   **Data Source:** Alpha Vantage API
 -   **Libraries:** Requests
 
 ## Local Setup and Installation
@@ -63,4 +63,4 @@ Open the `app.py` file and replace `'YOUR_API_KEY'` with your actual key.
 ```bash
 python app.py
 ```
-Open your web browser and navigate to `http://127.0.0.1:5000` to see the application running. 
+Open your web browser and navigate to `http://122.0.0.1:5000` to see the application running.
