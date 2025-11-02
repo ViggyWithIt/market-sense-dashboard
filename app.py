@@ -20,7 +20,7 @@ def get_market_data(symbol='IBM'):
         print(f"Error fetching price data: {e}")
         price_data = {}
 
-    # 2. Fetch news sentiment data
+    # 2 fetch news sentiment data
     news_url = f'https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers={symbol}&limit=200&apikey={API_KEY}'
     print(f"Fetching news sentiment data for {symbol}...")
     try:
@@ -60,14 +60,14 @@ def get_market_data(symbol='IBM'):
             
     return combined_data
 
-#Define the Main Route (homepage)
+#define the main route (homepage)
 @app.route('/')
 def index():
     print("Rendering the homepage with data...")
     # Call  function to get the data
     market_data = get_market_data()
     
-    # Sort the dates to pass them to the template in order
+    #Sort the dates to pass them to the template in order
     sorted_dates = sorted(market_data.keys(), reverse=True)
     
     # Pass the data to the template file
