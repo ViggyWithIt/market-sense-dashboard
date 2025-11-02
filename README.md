@@ -64,3 +64,5 @@ Open the `app.py` file and replace `'YOUR_API_KEY'` with your actual key.
 python app.py
 ```
 Open your web browser and navigate to `http://122.0.0.1:5000` to see the application running.
+
+feel free to email julian.vignes2@gmail.com to notify about any bugs :)
