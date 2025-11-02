@@ -4,17 +4,17 @@
 
 ![Market-Sense Screenshot](images/screenshot.png)
 
-## Why I Built This
+## Why I Built this
 
-After my quantitative trading model was blindsided by a sudden news event, I realized that the numbers on the chart were only half the story. I became obsessed with the idea of seeing the "human" element—the fear and greed reflected in the news—right alongside the hard data. I wanted to build a tool that could bridge that gap.
+After my quantitative trading model was blindsided by a sudden news event, I realized that the numbers on the chart were really half the story. I became obsessed with the idea of seeing the "human" element - the fear & greed reflected in the news—right alongside the hard data. I wanted to build a tool that could bridge that gap.
 
-Market-Sense is my answer. It's a web app that pulls daily stock prices and the latest financial news, analyzes the sentiment of the headlines, and then plots both on a single, interactive graph. This project was my deep dive into full-stack development, APIs, and the challenge of turning messy, real-world news into structured, visual data. It's my attempt to create a clearer, more contextual view of the market.
+Market-Sense is my answer. It's a web app that pulls daily stock prices and the latest financial news, analyzes the sentiment of the headlines, and then plots both on a single, interactive graph. This project was my deep dive into full-stack development, APIs, and the challenge of turning messy real-world news into structured/visual data. It's my attempt to create a clearer, more contextual view of the market.
 
 ## What It Does
 
 -   **Fetches daily stock prices and relevant news** for a given ticker using the Alpha Vantage API.
--   **Analyzes news headlines** to calculate an average daily sentiment score.
--   **Plots both price and sentiment** on an interactive Chart.js graph with two Y-axes for easy comparison.
+-   **Analyzes news headlines** to calculate an average daily sentiment score
+-   **Plots both price and sentiment** on an interactive Chart.js graph with two Y-axes for easy comparison
 -   **Built on a simple full-stack architecture** with a Python/Flask backend for data processing and a clean HTML/JS frontend for visualization.
 
 ## Tech Stack
@@ -53,7 +53,7 @@ pip install -r requirements.txt
 ```
 
 **4. Add Your API Key**
-This project requires a free API key from Alpha Vantage.
+This project requires a free API key from Alpha Vantage. Note that there's a free limit to the number of data retrievals through Alpha Vantage, which is why the graph may stop appearing after a number of attempts.
 
 > **Important:** Get your free key at [https://www.alphavantage.co/support/#api-key](https://www.alphavantage.co/support/#api-key)
 
