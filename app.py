@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 def get_market_data(symbol='IBM'):
     API_KEY = 'H30O5AJRVNKSKAGQ'
-    
+     
     #1. fetch price data
     price_url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&outputsize=full&apikey={API_KEY}'
     print(f"Fetching daily price data for {symbol}...")
