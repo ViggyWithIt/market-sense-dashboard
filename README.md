@@ -30,8 +30,8 @@ Follow these steps to run the project on your local machine.
 
 **1. Clone the Repository**
 ```bash
-git clone https://github.com/your-username/market-sense-project.git
-cd market-sense-project
+git clone https://github.com/ViggyWithIt/market-sense-dashboard.git
+cd market-sense-dashboard
 ```
 
 **2. Create and Activate a Virtual Environment**
